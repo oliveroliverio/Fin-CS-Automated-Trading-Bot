@@ -56,7 +56,10 @@ def on_message(ws, message):
   previous_tick = current_tick
   current_tick = json.loads(message)
 
-
+  # print debugging info
+  print("=== Recieved Tick ===")
+  # print formatted string of the timestamp and price
+  print("{} @ {}", format(current_tick['time'], current_tick['price']))
 
 socket = "wss://ws-feed.pro.coinbase.com"
 ws = websocket.WebSocketApp(socket, on_open=on_open, on_message=on_message)
