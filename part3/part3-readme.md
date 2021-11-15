@@ -22,8 +22,14 @@ ws = websocket.WebSocketApp(socket, on_open=on_open, on_message=on_message)
 ws.run_forever()
 ```
 
-want to keep track of what minutes are processed.  So create a new dictionary.  If minute isn't in the minute processed dictionary, create a new minute record.  We'll start with empty list of minute_candlesticks.
+want to keep track of what minutes are processed.
+So create a new dictionary.
+If minute isn't in the minute processed dictionary, create a new minute record.
+We'll start with empty list of minute_candlesticks.
 
+Now add code on on_message() function to update candlestick data based on the prices that come in
+- create a global current_tick and previous_tick to police into scope
+-
 ```python
 import websocket, json
 
@@ -45,8 +51,13 @@ def on_open(ws):
   ws.send(json.dumps(subscribe_message))
 
 def on_message(ws, message):
-  print("recieved message")
-  print(message)
+  global current_tick, previous_tick
+  # when you see a message
+  previous_tick = current_tick
+  current_tick = json.loads(message)
+
+
+
 socket = "wss://ws-feed.pro.coinbase.com"
 ws = websocket.WebSocketApp(socket, on_open=on_open, on_message=on_message)
 ws.run_forever()
