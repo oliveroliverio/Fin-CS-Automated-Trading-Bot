@@ -27,6 +27,8 @@ want to keep track of what minutes are processed.  So create a new dictionary
 ```python
 import websocket, json
 
+minutes_processed = {}
+
 def on_open(ws):
   print("opened connection")
   subscribe_message = {
