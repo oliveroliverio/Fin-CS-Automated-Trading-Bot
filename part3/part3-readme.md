@@ -65,3 +65,23 @@ socket = "wss://ws-feed.pro.coinbase.com"
 ws = websocket.WebSocketApp(socket, on_open=on_open, on_message=on_message)
 ws.run_forever()
 ```
+Run this: `python bot.py`
+
+Output
+```
+2021-11-15T23:57:55.848199Z @ 63653.8
+=== Recieved Tick ===
+2021-11-15T23:57:55.904106Z @ 63651.23
+=== Recieved Tick ===
+2021-11-15T23:57:55.904106Z @ 63651.23
+=== Recieved Tick ===
+2021-11-15T23:57:55.917575Z @ 63651.23
+=== Recieved Tick ===
+2021-11-15T23:57:55.917575Z @ 63650
+=== Recieved Tick ===
+2021-11-15T23:57:56.456059Z @ 63641.66
+=== Recieved Tick ===
+2021-11-15T23:57:56.591046Z @ 63641.66
+```
+
+Now we can build minute candlesticks based on this tick data
